@@ -1,0 +1,12 @@
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+KernelAbstractions = "63c18a36-062a-441e-b654-da1e3ab1ce7c"
+LIKWID = "bf22376a-e803-4184-b2ed-56326e3bff83"
+NUMA = "292f1341-b53f-425a-80e5-3597ad0961bf"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+PrettyTables = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
+ThreadPinning = "811555cd-349b-4f26-b7bc-1f208b848042"
+
+[extras]
+CUDA_Runtime_jll = "76a88914-d11a-5bdc-97e0-2f5a05c973a2"
