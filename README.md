@@ -10,6 +10,15 @@ Most participants will get access to the [Noctua 2](https://pc2.uni-paderborn.de
 
 In this case, **a browser is all that's needed!**
 
+#### Getting started
+
+* Login to [PC2 JupyterHub](https://pc2.de/go/jupyterhub) with the provided credentials.
+* After login, click on the "Start Server" button.
+* Select the **"JuliaHEP - HPC Tutorial (full CPU node)"** preset (should already be the default) and click on "Start". This will start a Jupyter server on a Noctua 2 compute node (might take a little while).
+* Once in Jupyter, you should see a folder with your username in the left side bar. Navigate into this folder. In it you'll find a local copy of this git repository that you can use for the tutorial.
+* To make Julia (and the IJulia kernel) available, click on the little blue hexagon in the side bar on the left. Then, type "jupyter" into the search bar at the top. Hover over `JupyterKernel-Julia/1.9.3-foss-2022a-CUDA-11.7.0` and click on the appearing "Load" button.
+* You should be all set up! Feel free to open the first notebook `1_axpy_cpu.ipynb` and, in the top right corner, select the kernel **"Julia (8 threads) 1.9.3"**.
+
 ### Preparation (own device/cluster)
 <details>
   <summary>Click me</summary>
