@@ -2,7 +2,7 @@
 
 A short tutorial on node-level HPC with Julia. It will take place as part of the [JuliaHEP 2023 Workshop](https://indico.cern.ch/event/1292759/) at the Erlangen Center for Astroparticle Physics (ECAP) in November 2023.
 
-### PC2 JupyterHub
+### [PC2 JupyterHub](https://jh.pc2.uni-paderborn.de/)
 
 **Link:** https://jh.pc2.uni-paderborn.de/
 
