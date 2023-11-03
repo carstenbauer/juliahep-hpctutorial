@@ -15166,7 +15166,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>In this case, <strong>a browser is all that's needed!</strong></p>
 <h4 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started">&#182;</a></h4><ul>
 <li>Login to <a href="https://pc2.de/go/jupyterhub">PC2 JupyterHub</a> with the provided credentials.</li>
-<li>After login, click on the &quot;Start Server&quot; button.</li>
+<li>After login, click on the &quot;Start My Server&quot; button.</li>
 <li>Select the <strong>&quot;JuliaHEP - HPC Tutorial (full CPU node)&quot;</strong> preset (should already be the default) and click on &quot;Start&quot;. This will start a Jupyter server on a Noctua 2 compute node (might take a little while).</li>
 <li>Once in Jupyter, you should see a folder with your username in the left side bar. Navigate into this folder. In it you'll find a local copy of this git repository that you can use for the tutorial.</li>
 <li>To make Julia (and the IJulia kernel) available, click on the little blue hexagon in the side bar on the left. Then, type &quot;jupyter&quot; into the search bar at the top. Hover over <code>JupyterKernel-Julia/1.9.3-foss-2022a-CUDA-11.7.0</code> and click on the appearing &quot;Load&quot; button.</li>
@@ -15203,7 +15203,7 @@ $$ \vec{y} = a \cdot \vec{x} + \vec{y} $$<p>Depending on the data type / precisi
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">axpy_serial!</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">    </span><span class="c">#</span>
-<span class="w">    </span><span class="c"># TODO: Implement the (serial) AXPY kernel.</span>
+<span class="w">    </span><span class="c"># TODO: Implement the serial AXPY kernel (naively).</span>
 <span class="w">    </span><span class="c">#</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="w">        </span><span class="nd">@inbounds</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -15311,7 +15311,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span>
@@ -15342,7 +15342,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>  694.574 ms (0 allocations: 0 bytes)
+<pre>  684.802 ms (0 allocations: 0 bytes)
 </pre>
 </div>
 </div>
@@ -15369,7 +15369,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span>
@@ -15389,10 +15389,10 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@belapsed</span><span class="w"> </span><span class="o">$</span><span class="n">f</span><span class="p">(</span><span class="o">$</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">evals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="c"># compute memory bandwidth and flops</span>
-<span class="w">    </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sizeof</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="c"># TODO: num bytes transferred in AXPY kernel (all iterations)</span>
-<span class="w">    </span><span class="n">flops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="c"># TODO: num flops performed in AXPY kernel (all iterations)</span>
-<span class="w">    </span><span class="n">mem_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e-9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="c"># TODO: memory bandwidth in GB/s</span>
-<span class="w">    </span><span class="n">flop_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flops</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e-9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="c"># TODO: flops in GFLOP/s</span>
+<span class="w">    </span><span class="n">bytes</span><span class="w">     </span><span class="o">=</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sizeof</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w">  </span><span class="c"># TODO: num bytes transferred in AXPY kernel (all iterations)</span>
+<span class="w">    </span><span class="n">flops</span><span class="w">     </span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w">  </span><span class="c"># TODO: num flops performed in AXPY kernel (all iterations)</span>
+<span class="w">    </span><span class="n">mem_rate</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="n">bytes</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e-9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">t</span><span class="w">  </span><span class="c"># TODO: memory bandwidth in GB/s</span>
+<span class="w">    </span><span class="n">flop_rate</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">flops</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e-9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">t</span><span class="w">  </span><span class="c"># TODO: flops in GFLOP/s</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">verbose</span>
 <span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Dtype: </span><span class="si">$dtype</span><span class="s">&quot;</span><span class="p">)</span>
@@ -15416,7 +15416,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
 
 
@@ -15436,7 +15436,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">measure_perf</span><span class="p">(</span><span class="n">axpy_serial!</span><span class="p">);</span>
@@ -15460,8 +15460,8 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Dtype: Float64
-	Memory Bandwidth (GB/s): 37.14
-	Compute (GFLOP/s): 3.1
+	Memory Bandwidth (GB/s): 37.13
+	Compute (GFLOP/s): 3.09
 </pre>
 </div>
 </div>
@@ -15510,7 +15510,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="nd">@code_native</span><span class="w"> </span><span class="n">debuginfo</span><span class="o">=</span><span class="ss">:none</span><span class="w"> </span><span class="n">axpy_serial!</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
@@ -15535,10 +15535,10 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>	.text
 	.file	&#34;axpy_serial!&#34;
-	.globl	&#34;julia_axpy_serial!_1131&#34;       <span class="ansi-black-intense-fg"># -- Begin function julia_axpy_serial!_1131</span>
+	.globl	&#34;julia_axpy_serial!_1072&#34;       <span class="ansi-black-intense-fg"># -- Begin function julia_axpy_serial!_1072</span>
 	.p2align	<span class="ansi-yellow-fg">4</span>, <span class="ansi-yellow-fg">0x90</span>
-	.type	&#34;julia_axpy_serial!_1131&#34;,@function
-<span class="ansi-red-intense-fg">&#34;julia_axpy_serial!_1131&#34;:</span>              <span class="ansi-black-intense-fg"># @&#34;julia_axpy_serial!_1131&#34;</span>
+	.type	&#34;julia_axpy_serial!_1072&#34;,@function
+<span class="ansi-red-intense-fg">&#34;julia_axpy_serial!_1072&#34;:</span>              <span class="ansi-black-intense-fg"># @&#34;julia_axpy_serial!_1072&#34;</span>
 	.cfi_startproc
 <span class="ansi-black-intense-fg"># %bb.0:                                # %top</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">pushq</span>	%rbp
@@ -15649,7 +15649,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 	<span class="ansi-cyan-intense-fg ansi-bold">movl</span>	<span class="ansi-yellow-fg">$16</span>, %edx
 	<span class="ansi-cyan-intense-fg ansi-bold">vzeroupper</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">callq</span>	*%r14
-	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22632421860112</span>, %r13           <span class="ansi-black-intense-fg"># imm = 0x149585772310</span>
+	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22590009144080</span>, %r13           <span class="ansi-black-intense-fg"># imm = 0x148BA5787310</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movl</span>	<span class="ansi-yellow-fg">$1392</span>, %esi                     <span class="ansi-black-intense-fg"># imm = 0x570</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movl</span>	<span class="ansi-yellow-fg">$16</span>, %edx
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%r14, %rcx
@@ -15659,22 +15659,22 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%rax, <span class="ansi-yellow-fg">24</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	<span class="ansi-yellow-fg">16</span><span class="ansi-yellow-fg">(</span>%r15<span class="ansi-yellow-fg">)</span>, %rdi
 	<span class="ansi-cyan-intense-fg ansi-bold">callq</span>	*%rcx
-	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22632419844992</span>, %rcx           <span class="ansi-black-intense-fg"># imm = 0x149585586380</span>
+	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22590007128960</span>, %rcx           <span class="ansi-black-intense-fg"># imm = 0x148BA559B380</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%r13, <span class="ansi-yellow-fg">-8</span><span class="ansi-yellow-fg">(</span>%rax<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%r12, <span class="ansi-yellow-fg">(</span>%rax<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%rax, <span class="ansi-yellow-fg">16</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>
-	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22632443636400</span>, %rdi           <span class="ansi-black-intense-fg"># imm = 0x149586C36AB0</span>
+	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22590030920368</span>, %rdi           <span class="ansi-black-intense-fg"># imm = 0x148BA6C4BAB0</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">leaq</span>	<span class="ansi-yellow-fg">48</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>, %rsi
 	<span class="ansi-cyan-intense-fg ansi-bold">movl</span>	<span class="ansi-yellow-fg">$3</span>, %edx
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%rcx, <span class="ansi-yellow-fg">48</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%r14, <span class="ansi-yellow-fg">56</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movq</span>	%rax, <span class="ansi-yellow-fg">64</span><span class="ansi-yellow-fg">(</span>%rsp<span class="ansi-yellow-fg">)</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-intense-fg">$ijl_invoke</span>, %rax
-	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22632572512672</span>, %rcx           <span class="ansi-black-intense-fg"># imm = 0x14958E71E9A0</span>
+	<span class="ansi-cyan-intense-fg ansi-bold">movabsq</span>	<span class="ansi-yellow-fg">$22590135223248</span>, %rcx           <span class="ansi-black-intense-fg"># imm = 0x148BACFC43D0</span>
 	<span class="ansi-cyan-intense-fg ansi-bold">callq</span>	*%rax
 	<span class="ansi-cyan-intense-fg ansi-bold">ud2</span>
 <span class="ansi-red-intense-fg">.Lfunc_end0:</span>
-	.size	&#34;julia_axpy_serial!_1131&#34;, .Lfunc_end0-&#34;julia_axpy_serial!_1131&#34;
+	.size	&#34;julia_axpy_serial!_1072&#34;, .Lfunc_end0-&#34;julia_axpy_serial!_1072&#34;
 	.cfi_endproc
                                         <span class="ansi-black-intense-fg"># -- End function</span>
 	.section	&#34;.note.GNU-stack&#34;,&#34;&#34;,@progbits
@@ -15716,7 +15716,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Base</span><span class="o">.</span><span class="n">Threads</span><span class="o">:</span><span class="w"> </span><span class="nd">@threads</span><span class="p">,</span><span class="w"> </span><span class="n">nthreads</span>
@@ -15738,7 +15738,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -15758,14 +15758,14 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">axpy_multithreading_dynamic!</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">    </span><span class="c">#</span>
 <span class="w">    </span><span class="c"># TODO: Implement a naive multithreaded AXPY kernel (with @threads).</span>
 <span class="w">    </span><span class="c">#</span>
-<span class="w">    </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
 <span class="w">        </span><span class="nd">@inbounds</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">nothing</span>
@@ -15785,7 +15785,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
 
 
@@ -15805,7 +15805,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">measure_perf</span><span class="p">(</span><span class="n">axpy_multithreading_dynamic!</span><span class="p">);</span>
@@ -15829,8 +15829,8 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Dtype: Float64
-	Memory Bandwidth (GB/s): 39.23
-	Compute (GFLOP/s): 3.27
+	Memory Bandwidth (GB/s): 39.04
+	Compute (GFLOP/s): 3.25
 </pre>
 </div>
 </div>
@@ -15913,7 +15913,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">ThreadPinning</span>
@@ -15929,7 +15929,7 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">threadinfo</span><span class="p">()</span>
@@ -15955,20 +15955,20 @@ $$<p>52 flops per number read, i.e. 4 bytes for <code>Float32</code></p>
 <pre>
 System: 128 cores (no SMT), 2 sockets, 8 NUMA domains
 
-<span class="ansi-bold">| </span>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,<span class="ansi-yellow-intense-fg ansi-bold">15</span>,
+<span class="ansi-bold">| </span>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
   16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,
-  32,<span class="ansi-yellow-intense-fg ansi-bold">33</span>,34,35,36,37,38,39,40,41,42,43,44,45,46,<span class="ansi-yellow-intense-fg ansi-bold">47</span>,
-  48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63<span class="ansi-bold"> |</span>
-<span class="ansi-bold">| </span><span class="ansi-yellow-intense-fg ansi-bold">64</span>,65,66,67,68,69,70,71,72,73,74,<span class="ansi-yellow-intense-fg ansi-bold">75</span>,76,77,78,79,
-  <span class="ansi-yellow-intense-fg ansi-bold">80</span>,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,
-  96,97,98,99,<span class="ansi-yellow-intense-fg ansi-bold">100</span>,101,102,103,104,105,106,107,108,109,110,111,
-  112,113,114,115,116,117,118,119,120,121,122,123,<span class="ansi-yellow-intense-fg ansi-bold">124</span>,125,126,127<span class="ansi-bold"> |</span>
+  <span class="ansi-yellow-intense-fg ansi-bold">32</span>,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,
+  <span class="ansi-yellow-intense-fg ansi-bold">48</span>,49,50,51,52,53,54,55,56,57,58,<span class="ansi-yellow-intense-fg ansi-bold">59</span>,60,61,62,63<span class="ansi-bold"> |</span>
+<span class="ansi-bold">| </span>64,65,66,67,68,69,70,71,<span class="ansi-yellow-intense-fg ansi-bold">72</span>,73,74,75,76,77,78,79,
+  80,81,82,83,84,<span class="ansi-yellow-intense-fg ansi-bold">85</span>,86,87,88,89,90,91,92,93,94,95,
+  96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,<span class="ansi-yellow-intense-fg ansi-bold">111</span>,
+  <span class="ansi-yellow-intense-fg ansi-bold">112</span>,113,114,115,116,117,118,119,120,121,122,<span class="ansi-yellow-intense-fg ansi-bold">123</span>,124,125,126,127<span class="ansi-bold"> |</span>
 
 <span class="ansi-yellow-intense-fg ansi-bold">#</span> = Julia thread, <span class="ansi-bold">|</span> = Socket seperator
 
 Julia threads: <span class="ansi-green-fg">8</span>
 ├ Occupied CPU-threads: <span class="ansi-green-fg">8</span>
-└ Mapping (Thread =&gt; CPUID): 1 =&gt; 80, 2 =&gt; 64, 3 =&gt; 33, 4 =&gt; 100, 5 =&gt; 47, ...
+└ Mapping (Thread =&gt; CPUID): 1 =&gt; 72, 2 =&gt; 112, 3 =&gt; 111, 4 =&gt; 123, 5 =&gt; 85, ...
 </pre>
 </div>
 </div>
@@ -15982,7 +15982,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:cores</span><span class="p">)</span>
@@ -15998,7 +15998,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">threadinfo</span><span class="p">()</span>
@@ -16051,7 +16051,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:sockets</span><span class="p">)</span>
@@ -16067,7 +16067,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">threadinfo</span><span class="p">()</span>
@@ -16131,7 +16131,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:cores</span><span class="p">)</span>
@@ -16232,7 +16232,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">threadinfo</span><span class="p">(;</span><span class="w"> </span><span class="n">groupby</span><span class="o">=</span><span class="ss">:numa</span><span class="p">)</span><span class="w"> </span><span class="c"># switch from socket/CPU grouping to NUMA grouping</span>
@@ -16298,7 +16298,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">NUMA</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span>
@@ -16314,7 +16314,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">numanode</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">rand!</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
@@ -16330,7 +16330,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">which_numa_node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -16349,7 +16349,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
@@ -16369,7 +16369,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">numanode</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">rand!</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
@@ -16385,7 +16385,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">which_numa_node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -16404,7 +16404,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 
 
 
@@ -16436,7 +16436,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">node1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_numa_node</span><span class="p">()</span>
@@ -16473,9 +16473,9 @@ Julia threads: <span class="ansi-green-fg">8</span>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>local NUMA node
-  714.653 ms (0 allocations: 0 bytes)
+  727.537 ms (0 allocations: 0 bytes)
 distant NUMA node
-  1.039 s (0 allocations: 0 bytes)
+  1.052 s (0 allocations: 0 bytes)
 </pre>
 </div>
 </div>
@@ -16516,7 +16516,7 @@ distant NUMA node
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:numa</span><span class="p">)</span>
@@ -16570,7 +16570,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span>
@@ -16646,16 +16646,12 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Random</span>
 
 <span class="k">function</span><span class="w"> </span><span class="n">generate_input_data</span><span class="p">(;</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="p">,</span><span class="w"> </span><span class="n">parallel</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
-<span class="w">    </span><span class="c">#</span>
-<span class="w">    </span><span class="c"># TODO: introduce a new keyword argument that, when set to true, initializes the data in parallel</span>
-<span class="w">    </span><span class="c">#       (in the same way as we&#39;ll later use it)</span>
-<span class="w">    </span><span class="c">#</span>
 <span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">(</span><span class="mf">3.141</span><span class="p">)</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">dtype</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
 <span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">dtype</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
@@ -16663,9 +16659,13 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <span class="w">        </span><span class="n">rand!</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="w">        </span><span class="n">rand!</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="c">#</span>
+<span class="w">        </span><span class="c"># TODO: initialize x and y in parallel</span>
+<span class="w">        </span><span class="c">#       (in the same way as we&#39;ll use it in the axpy kernel)</span>
+<span class="w">        </span><span class="c">#</span>
 <span class="w">        </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="w">            </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
-<span class="w">            </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
+<span class="w">            </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="w">            </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
 <span class="w">        </span><span class="k">end</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span>
@@ -16685,7 +16685,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 
 
 
@@ -16705,7 +16705,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:numa</span><span class="p">)</span>
@@ -16731,11 +16731,11 @@ Julia threads: <span class="ansi-green-fg">8</span>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Dtype: Float64
-	Memory Bandwidth (GB/s): 38.99
-	Compute (GFLOP/s): 3.25
+	Memory Bandwidth (GB/s): 38.86
+	Compute (GFLOP/s): 3.24
 Dtype: Float64
-	Memory Bandwidth (GB/s): 174.23
-	Compute (GFLOP/s): 14.52
+	Memory Bandwidth (GB/s): 164.81
+	Compute (GFLOP/s): 13.73
 </pre>
 </div>
 </div>
@@ -16766,7 +16766,7 @@ Dtype: Float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">threadinfo</span><span class="p">(;</span><span class="w"> </span><span class="n">groupby</span><span class="o">=</span><span class="ss">:numa</span><span class="p">)</span>
@@ -16941,7 +16941,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">axpy_multithreading_static!</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
@@ -16968,7 +16968,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
@@ -17000,14 +17000,10 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">generate_input_data</span><span class="p">(;</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="p">,</span><span class="w"> </span><span class="n">parallel</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">static</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
-<span class="w">    </span><span class="c">#</span>
-<span class="w">    </span><span class="c"># TODO: introduce a new keyword argument `static` that, when set to true, initializes the data in parallel with static scheduling</span>
-<span class="w">    </span><span class="c">#       (in the same way as we&#39;ll later use it)</span>
-<span class="w">    </span><span class="c">#</span>
 <span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">(</span><span class="mf">3.141</span><span class="p">)</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">dtype</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
 <span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">dtype</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
@@ -17017,13 +17013,13 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <span class="w">    </span><span class="k">else</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">static</span>
 <span class="w">            </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="w">                </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
-<span class="w">                </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
+<span class="w">                </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="w">                </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
 <span class="w">            </span><span class="k">end</span>
 <span class="w">        </span><span class="k">else</span>
 <span class="w">            </span><span class="nd">@threads</span><span class="w"> </span><span class="ss">:static</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="w">                </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
-<span class="w">                </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span>
+<span class="w">                </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="w">                </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
 <span class="w">            </span><span class="k">end</span>
 <span class="w">        </span><span class="k">end</span>
 <span class="w">    </span><span class="k">end</span>
@@ -17044,7 +17040,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
 
@@ -17064,7 +17060,7 @@ Julia threads: <span class="ansi-green-fg">8</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">pinthreads</span><span class="p">(</span><span class="ss">:numa</span><span class="p">)</span>
@@ -17090,11 +17086,11 @@ Julia threads: <span class="ansi-green-fg">8</span>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Dtype: Float64
-	Memory Bandwidth (GB/s): 38.94
-	Compute (GFLOP/s): 3.24
+	Memory Bandwidth (GB/s): 39.01
+	Compute (GFLOP/s): 3.25
 Dtype: Float64
-	Memory Bandwidth (GB/s): 312.83
-	Compute (GFLOP/s): 26.07
+	Memory Bandwidth (GB/s): 304.61
+	Compute (GFLOP/s): 25.38
 </pre>
 </div>
 </div>
