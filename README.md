@@ -19,6 +19,12 @@ In this case, **a browser is all that's needed!**
 * To make Julia (and the IJulia kernel) available, click on the little blue hexagon in the side bar on the left. Then, type "jupyter" into the search bar at the top. Hover over `JupyterKernel-Julia/1.9.3-foss-2022a-CUDA-11.7.0` and click on the appearing "Load" button.
 * You should be all set up! Feel free to open the first notebook `1_axpy_cpu.ipynb` and, in the top right corner, select the kernel **"Julia (8 threads) 1.9.3"**.
 
+### HTML version
+
+In the [`html` folder](https://github.com/carstenbauer/juliahep-hpctutorial/tree/main/html), we provide a non-interactive version of the tutorial materials.
+
+**You may want to use the html pages to follow along if you don't have cluster-access.**
+
 ### Preparation (own device/cluster)
 <details>
   <summary>Click me</summary>
