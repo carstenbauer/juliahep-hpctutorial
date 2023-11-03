@@ -4,7 +4,7 @@ A short tutorial on node-level HPC with Julia. It will take place as part of the
 
 ### [PC2 JupyterHub](https://jh.pc2.uni-paderborn.de/)
 
-**Link:** https://jh.pc2.uni-paderborn.de/
+**Link:** https://pc2.de/go/jupyterhub
 
 Most participants will get access to the [Noctua 2](https://pc2.uni-paderborn.de/hpc-services/available-systems/noctua2) cluster through the [PC2 JupyterHub](https://jh.pc2.uni-paderborn.de/hub/home).
 
