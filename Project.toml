@@ -1,6 +1,7 @@
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+ChunkSplitters = "ae650224-84b6-46f8-82ea-d812ca08434e"
 KernelAbstractions = "63c18a36-062a-441e-b654-da1e3ab1ce7c"
 LIKWID = "bf22376a-e803-4184-b2ed-56326e3bff83"
 NUMA = "292f1341-b53f-425a-80e5-3597ad0961bf"

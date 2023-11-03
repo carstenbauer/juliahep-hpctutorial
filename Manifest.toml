@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "160e3469ae313e7af95ac144651ddd27b55e4057"
+project_hash = "e3c0049cc68a4b599113536c7bb9841d2c684f9f"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -123,6 +123,13 @@ git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 pinned = true
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 version = "1.16.1+1"
+
+[[deps.ChunkSplitters]]
+deps = ["TestItems"]
+git-tree-sha1 = "997795c20668da597fa67d50b01bb73615de6221"
+pinned = true
+uuid = "ae650224-84b6-46f8-82ea-d812ca08434e"
+version = "2.0.1"
 
 [[deps.CodecZlib]]
 deps = ["TranscodingStreams", "Zlib_jll"]
@@ -1135,6 +1142,12 @@ version = "0.1.1"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 pinned = true
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[[deps.TestItems]]
+git-tree-sha1 = "8621ba2637b49748e2dc43ba3d84340be2938022"
+pinned = true
+uuid = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
+version = "0.1.1"
 
 [[deps.ThreadPinning]]
 deps = ["DelimitedFiles", "DocStringExtensions", "Libdl", "LinearAlgebra", "PrecompileTools", "Preferences", "Random"]
