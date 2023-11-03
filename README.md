@@ -2,14 +2,16 @@
 
 A short tutorial on node-level HPC with Julia. It will take place as part of the [JuliaHEP 2023 Workshop](https://indico.cern.ch/event/1292759/) at the Erlangen Center for Astroparticle Physics (ECAP) in November 2023.
 
-## PC2 JupyterHub
+### PC2 JupyterHub
 
 **Link:** https://jh.pc2.uni-paderborn.de/
 
 Most participants will get access to the [Noctua 2](https://pc2.uni-paderborn.de/hpc-services/available-systems/noctua2) cluster through the [PC2 JupyterHub](https://jh.pc2.uni-paderborn.de/hub/home) for the tutorial. In this case, **a browser is all that's needed.**
 
-## Preparation (own device/cluster)
-
+### Preparation (own device/cluster)
+<details>
+  <summary>Click me</summary>
+  
 Most participants will run the tutorial on the Noctua 2 cluster and **don't need to prepare anything**. However, if you want to/need to, this is what you should do.
 
 * Install Julia (preferrably with [juliaup](https://github.com/JuliaLang/juliaup))
@@ -30,9 +32,12 @@ If you want to work **on a cluster** that you have access to, you also need to m
 * have the Julia extension installed and working **on the cluster**
 
 In particular the latter (most likely) requires you to set the `julia.exectuablePath` setting to point to a valid julia executable. If your cluster uses Lmod modules (which it almost certainly does), you might need to create a julia wrapper script similar to what is described [here](https://upb-pc2.atlassian.net/wiki/spaces/PC2DOK/pages/1903803/VS+Code+Remote+Usage#Julia-wrapper%3A-manual-approach-(not-recommended!)).
+</details>
 
-## VS Code Access (for the bold)
-
+### VS Code Access (for the bold/curious)
+<details>
+  <summary>Click me</summary>
+  
 If you want to dare to access a Noctua 2 **compute node** (not just a login node!) with VS Code instead of via JupyterHub, this is what you should do:
 
 * Put the following into your `.ssh/config` (if it doesn't exist, create it) and replace `<username>` with the username that you've received.
@@ -63,3 +68,4 @@ If you want to dare to access a Noctua 2 **compute node** (not just a login node
 * Once you are on the compute node, make sure to install the Julia Extension (via the left side bar).
 * Once you have the Extension, set the `julia.executablePath` setting to point to: `/opt/software/pc2/julia/julia_vscode`.
 * That's it! You should be good to go!
+</details>
