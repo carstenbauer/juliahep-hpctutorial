@@ -56,7 +56,7 @@ If you want to work **on a cluster** that you have access to, you also need to m
 In particular the latter (most likely) requires you to set the `julia.exectuablePath` setting to point to a valid julia executable. If your cluster uses Lmod modules (which it almost certainly does), you might need to create a julia wrapper script similar to what is described [here](https://upb-pc2.atlassian.net/wiki/spaces/PC2DOK/pages/1903803/VS+Code+Remote+Usage#Julia-wrapper%3A-manual-approach-(not-recommended!)).
 </details>
 
-### VS Code Access (for the bold/curious)
+### Noctua 2 VS Code Access (for the bold/curious)
 <details>
   <summary>Click me</summary>
   
