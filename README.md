@@ -21,9 +21,14 @@ In this case, **a browser is all that's needed!**
 
 ### HTML version
 
-In the [`html` folder](https://github.com/carstenbauer/juliahep-hpctutorial/tree/main/html), we provide a non-interactive version of the tutorial materials.
+In the [`gh-pages`](https://github.com/carstenbauer/juliahep-hpctutorial/tree/gh-pages/) branch, we provide a **non-interactive** version of the tutorial materials.
 
-**You may want to use the html pages to follow along if you don't have cluster-access.**
+* [axpy_cpu](https://carstenbauer.github.io/juliahep-hpctutorial/1_axpy_cpu.html)
+* [axpy_cpu_scaling](https://carstenbauer.github.io/juliahep-hpctutorial/2_axpy_cpu_scaling.html)
+* [axpy_xpu](https://carstenbauer.github.io/juliahep-hpctutorial/3_axpy_xpu.html)
+* [heat_equation](https://carstenbauer.github.io/juliahep-hpctutorial/4_heat_equation.html)
+
+**Note:** You may want to use the html pages to follow along if you don't have cluster-access.
 
 ### Preparation (own device/cluster)
 <details>
