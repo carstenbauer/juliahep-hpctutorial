@@ -94,7 +94,7 @@ If you want to dare to access a Noctua 2 **compute node** (not just a login node
 
 ## Acknowledgements
 
-The HPC resources for this tutorial are provided by the Paderborn Center for Parallel Computing (PC2) within the German National High-Performance Computing Alliance (NHR).
+The HPC resources for this tutorial are provided by the [Paderborn Center for Parallel Computing (PC2)](https://pc2.uni-paderborn.de) within the German [National High-Performance Computing Alliance (NHR)](https://www.nhr-verein.de).
 
 <div style="float: left">
  <a href="https://pc2.uni-paderborn.de/"><img src="https://user-images.githubusercontent.com/187980/190167755-ead6173d-fb87-40da-ae0f-f0c99e72c22b.png" height=100px></a>
