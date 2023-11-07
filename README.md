@@ -91,3 +91,13 @@ If you want to dare to access a Noctua 2 **compute node** (not just a login node
 * Once you have the Extension, set the `julia.executablePath` setting to point to: `/opt/software/pc2/julia/julia_vscode`.
 * That's it! You should be good to go!
 </details>
+
+## Acknowledgements
+
+The HPC resources for this tutorial are provided by the Paderborn Center for Parallel Computing (PC2) within the German National High-Performance Computing Alliance (NHR).
+
+<div style="float: left">
+ <a href="https://pc2.uni-paderborn.de/"><img src="https://user-images.githubusercontent.com/187980/190167755-ead6173d-fb87-40da-ae0f-f0c99e72c22b.png" height=100px></a>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <a href="https://www.nhr-verein.de/"><img src="https://user-images.githubusercontent.com/187980/190169322-89560987-69cf-4c6f-9236-993704461763.svg" height=100px></a>
+</div>
